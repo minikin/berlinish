@@ -18,15 +18,25 @@ class _PhotosListState extends State<PhotosList> {
     var stream = await photo.getPhotos(); 
     stream.listen(
       (photo) => setState(() => photoList.add(photo))
-      // (photo) => print(photo)
+    );
+  }
+
+  _getData() async {
+    var stream = await photo.getData(1); 
+      stream.listen((page) => print(page)
     );
   }
 
   @override
   initState(){
     super.initState();
-    _getPhotos();
+   _getPhotos();
+    // _getData();
   }
+
+  // _aboutToReachScrollEnd(){
+  //   //
+  // }
 
   @override
    Widget build(BuildContext context) {
