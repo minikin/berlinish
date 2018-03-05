@@ -3,19 +3,20 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../configs/keys.dart' show key;
+import './user.dart';
 import './pagedResponse.dart';
 
 class Photo {
   final String id;
-  final String author;
   final String imagePath;
   final String description;
+  final Author author;
 
   Photo.fromJson(Map jsonMap) :
     id = jsonMap['id'],
-    author = jsonMap['user']['name'],
     imagePath = jsonMap['urls']['small'],
-    description = jsonMap['description'];
+    description = jsonMap['description'],
+    author = jsonMap['user'];
 
   String toString() => 'Photo: $author';
 }
@@ -36,8 +37,6 @@ Future<Stream<Photo>> getPhotos({int page = 1}) async {
     .expand((jsonBody) => (jsonBody as Map)['results'])
     .map((jsonPlace) => new Photo.fromJson(jsonPlace));
 }
-
-
 
 // Future<PagedResponse<Photo>> getData([int page = 1]) async {
 //     var url = 'https://api.unsplash.com/search/photos/?'+
