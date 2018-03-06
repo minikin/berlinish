@@ -3,7 +3,7 @@ import 'dart:convert';
 import 'package:http/http.dart' as http;
 
 import '../configs/keys.dart' show key;
-import './user.dart';
+import './author.dart';
 import './pagedResponse.dart';
 
 class Photo {
@@ -16,8 +16,8 @@ class Photo {
     id = jsonMap['id'],
     imagePath = jsonMap['urls']['small'],
     description = jsonMap['description'],
-    author = jsonMap['user'];
-
+    author = new Author.fromJson(jsonMap['user']);
+  
   String toString() => 'Photo: $author';
 }
 

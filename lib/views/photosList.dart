@@ -19,8 +19,8 @@ class _PhotosListState extends State<PhotosList> {
   @override
   initState(){
     super.initState();
-     // _getPhotos();
-      _aboutToReachScrollEnd();
+    _getPhotos();
+      //_aboutToReachScrollEnd();
       // _getData();
   }
 

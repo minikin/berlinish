@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 import '../models/photo.dart';
+import '../models/author.dart';
 
 class PhotoWidget extends StatelessWidget {
-  PhotoWidget(this.photo);
+  PhotoWidget(this.photo, this.author);
   final Photo photo;
+  final Author author;
 
   @override
   Widget build(BuildContext context) {
